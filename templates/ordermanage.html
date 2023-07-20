@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Dan's plums</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+  <style>
+   h2 {text-align: center;font-family: "Arial", Helvetica, Arial, sans-serif;  color: #444;}
+   h3 {text-align: center;font-family: "Arial", Helvetica, Arial, sans-serif;  color: #444;}
+   p {text-align: center;font-family:  "Arial", Helvetica, Arial, sans-serif;  color: #444;}
+  </style>
+</head>
+
+<body style="background-color:aquamarine;">
+<h2>Manage Orders</h2>
+
+<br><br>
+<form action="./ordermanage" method="POST" >
+  <p><b>{{message}}</b></p>
+  <br><br>
+</form>
+
+<table>
+<thead>
+  <tr>
+    <th style="border: 1px solid black;width: 2%";>N</th>
+    <th style="border: 1px solid black;width: 11%";>Order Time</th>
+    <th style="border: 1px solid black;width: 11%";>Flavor</th>
+    <th style="border: 1px solid black;width: 11%";>Sugar</th>
+    <th style="border: 1px solid black;width: 11%";>Size</th>
+    <th style="border: 1px solid black;width: 11%";>Name</th>
+    <th style="border: 1px solid black;width: 11%";>Special Instruction(s)</th>
+    <th style="border: 1px solid black;width: 8%";>Status</th>
+    <th style="border: 1px solid black;width: 27%";>Notes</th>
+    <th style="border: 1px solid black;width: 8%";>Action</th>
+  </tr>
+</thead>
+<tbody>
+
+  {% for order in orderlist %}
+  <tr>
+
+    <form action="./orderupdate" method="POST">
+
+    {% for k,v in order.items()  %}
+
+    {% if k == "Order status"%}
+
+      <td style="border: 1px solid black;width: 8%";>
+      <input type="hidden" value="{{v}}" name="oldorderstatus" id="oldorderstatus">
+
+
+      <select id="neworderstatus" name="neworderstatus">
+      <option value="{{v}}"  selected> {{v}}</option>
+      <option value="Order Received">Order Received</option>
+      <option value="Order Processed">Order Processed</option>
+      <option value="Order Delayed">Order Delayed</option>
+      <option value="Order Completed">Order Completed</option>
+
+      </select>
+      </td>
+
+    {% else %}
+    {% if k == "Order notes"%}
+
+      <td style="border: 1px solid black;width: 27%">
+      <input type="hidden" value="{{v}}" name="oldordernotes" id="oldordernotes">
+      <input type="text" ;width="27%"; value="{{v}}" name="newordernotes" id="newordernotes">
+      </td>
+      <td style="border: 1px solid black;width: 8%">
+      <input type="submit" name="action" value="Update">
+      </td>
+
+      {% else %}
+      {% if k == "Order number" %}
+      <td style="border: 1px solid black;width: 2%">
+      <input type="hidden" value="{{v}}" name="ordernum" id="ordernum">
+      {{v}}
+      </td>
+      {% else %}
+      <td style="border: 1px solid black;width: 11%">
+      {{v}}
+      </td>
+
+      {% endif %}
+      {% endif %}
+      {% endif %}
+
+
+    {% endfor %}
+
+
+    </form>
+
+  </tr>
+  {% endfor %}
+</tbody>
+</table>
+<br><br>
+<form action="./ordermanage" method="POST" >
+  <br><br>
+  <input class="center" type="submit" name="action" value="Home">
+</form>
+</body>
+</html>

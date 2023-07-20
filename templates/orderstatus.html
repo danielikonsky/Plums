@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Dan's plums</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+  <style>
+   h2 {text-align: center;font-family: "Arial", Helvetica, Arial, sans-serif;  color: #444;}
+   h3 {text-align: center;font-family: "Arial", Helvetica, Arial, sans-serif;  color: #444;}
+   p {text-align: center;font-family:  "Arial", Helvetica, Arial, sans-serif;  color: #444;}
+  </style>
+</head>
+
+<body style="background-color:aquamarine;">
+<h2>Order status</h2>
+
+<br>
+<form action="./orderstatus" method="POST" >
+  <p><b>{{message}}</b></p>
+  <br><br>
+<div class="centerstatus">
+<label for="ordernum" style="font-family: Arial">Please Enter Your Order Number:</label>
+<input type="text" name="ordernum" id="ordernum">
+<label for="ordername" style="font-family: Arial">Please Enter Name on Your Order:</label>
+<input type="text" name="ordername" id="ordername">
+<input type="submit" name="action" value="Check Status" Check&nbsp;Status>
+</div>
+
+<br><br>
+<table  style="font-family: Arial">
+
+  {% for order in orderlist %}
+    {% for k,v in order.items() %}
+  <tr>
+    <td>{{k}}</td>
+    <td>{{v}}</td>
+  </tr>
+  {% endfor %}
+  {% endfor %}
+
+</table>
+<br><br>
+<div class="center">
+<input type="submit" name="action" value="Home" Home>
+</div>
+</form>
+</body>
+</html>

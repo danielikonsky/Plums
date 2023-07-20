@@ -1,0 +1,26 @@
+body {
+  margin: auto;
+  width: 640px;
+  padding: 50px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #444;
+}
+
+/* Centered Image Code */
+
+.container {
+  height: 500px;
+  position: relative;
+  border: 3px solid #dbe4ed; /* Border color is optional */
+}
+
+ .centerstatus {
+   margin-left: 10%;
+   margin-right: auto;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+
+}
