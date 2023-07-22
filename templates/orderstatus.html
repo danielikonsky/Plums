@@ -19,11 +19,30 @@
   <p><b>{{message}}</b></p>
   <br><br>
 <div class="centerstatus">
+<table>
+<tr>
+<td>
 <label for="ordernum" style="font-family: Arial">Please Enter Your Order Number:</label>
+</td>
+<td>
 <input type="text" name="ordernum" id="ordernum">
+</td>
+<tr>
+<td>
 <label for="ordername" style="font-family: Arial">Please Enter Name on Your Order:</label>
+</td>
+<td>
 <input type="text" name="ordername" id="ordername">
-<input type="submit" name="action" value="Check Status" Check&nbsp;Status>
+</td>
+<tr>
+<td>
+<input style="text-align:center;" type="submit" name="action" value="Check Status" Check&nbsp;Status>
+</td>
+<td>
+<input style="text-align:center;" type="submit" name="action" value="Home" Home>
+</td>
+</tr>
+</table>
 </div>
 
 <br><br>
@@ -39,10 +58,6 @@
   {% endfor %}
 
 </table>
-<br><br>
-<div class="center">
-<input type="submit" name="action" value="Home" Home>
-</div>
 </form>
 </body>
 </html>
