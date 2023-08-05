@@ -53,6 +53,8 @@ def order():
 
         if _flavor and _sugar and _size and _name:
             pass
+        elif _flavor == 'NEW! Fresh Plums' and _name:
+            pass
         else:
             _message = "Please Enter ALL required fields"
             return render_template('order.html',message= _message)
